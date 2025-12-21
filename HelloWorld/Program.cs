@@ -47,3 +47,21 @@ Console.WriteLine(longPhrase);
 Console.WriteLine($"Does it begin with 'This'? \n{longPhrase.Contains("This")}");
 Console.WriteLine($"Does it contain 'This'? \n{longPhrase.Contains("This")}");
 Console.WriteLine($"Does it end with 'This'? \n{longPhrase.EndsWith("This")}");
+
+// freeCodeCamp
+Console.WriteLine("=======================================");
+Console.WriteLine("Begin FreeCodeCamp/Microsoft Sections");
+Console.WriteLine("=======================================");
+Console.WriteLine("Hello World!");
+Console.Write("Congratulations!");
+Console.Write(" ");
+Console.Write("You just wrote your first lines of code.");
+// Console.WriteLine adds a new line, whereas Console.Write just
+// appends the statement to the same line.
+Console.WriteLine("This is Console.WriteLine.");
+Console.Write("And this is Console.Write.");
+Console.Write(" And so is this.\n");
+
+Console.WriteLine("++++++++++++++++++++++++++++++++++++++");
+Console.WriteLine("This is the first line.");
+Console.WriteLine("This is the second line.");
