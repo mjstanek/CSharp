@@ -167,7 +167,8 @@ for (int i = 0; i < myStrings.Length; i++)
     periodLocation = myString.IndexOf(".");
 
     string mySentence;
-
+    /*
+     * Here's the book answer
     while (periodLocation != -1)
     {
 
@@ -180,4 +181,12 @@ for (int i = 0; i < myStrings.Length; i++)
 
     mySentence = myString.Trim();
     Console.WriteLine(mySentence);
+    */
+
+    // This is how I would prefer to approach this task
+    string[] splitSentence = myString.Split(".");
+    foreach (string s in splitSentence)
+    {
+        Console.WriteLine($"{s.TrimStart()}");
+    }
 }
