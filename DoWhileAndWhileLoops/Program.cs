@@ -165,9 +165,9 @@ for (int i = 0; i < myStrings.Length; i++)
 {
     myString = myStrings[i];
     periodLocation = myString.IndexOf(".");
-
-    string mySentence;
     /*
+    string mySentence;
+    
      * Here's the book answer
     while (periodLocation != -1)
     {
