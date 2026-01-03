@@ -19,6 +19,7 @@
 
 // the ourAnimals array will store the following: 
 using System.Diagnostics.CodeAnalysis;
+using System.Runtime.ExceptionServices;
 using System.Runtime.InteropServices;
 
 string animalSpecies = "";
@@ -297,7 +298,108 @@ do
         case "3":
             // Check all animals have an age and physical description
             Console.WriteLine("--------------------");
-            Console.WriteLine("Challenge Project - please check back soon to see progress.");
+            bool noMissingData = true;
+            for (int i = 0; i < maxPets; i++)
+            {
+                if (ourAnimals[i, 0] != "ID #: ")
+                {
+                    string enteredAge = ourAnimals[i,2].Substring(4);
+                    int petAge;
+                    bool validEntry = int.TryParse(enteredAge, out petAge);
+                    bool exitLoop = false;
+
+                    if (validEntry == false)
+                    {
+                        noMissingData = false;
+                        do
+                        {
+                            if (ourAnimals[i, 3] != "Nickname: ")
+                            {
+                                Console.WriteLine($"Pet {ourAnimals[i, 0]}, {ourAnimals[i, 3]}, is missing an age.");
+                            }
+                            else
+                            {
+                                Console.WriteLine($"Pet {ourAnimals[i, 0]} is missing an age.");
+                            }
+                            Console.WriteLine("Please enter an age or a question mark if it is still unknown:");
+                            readResult = Console.ReadLine();
+                           
+                            if (readResult != null)
+                            {
+                                animalAge = readResult;
+                                if (animalAge != "?")
+                                {
+                                    validEntry = int.TryParse(animalAge, out petAge);
+                                }
+                                else if (animalAge == "?")
+                                {
+                                    validEntry = true;
+                                }
+                                else
+                                {
+                                    validEntry = false;
+                                    Console.WriteLine("Please enter a valid animal age.");
+                                }
+                            }
+
+                            if (validEntry)
+                            {
+                                if (animalAge != "?")
+                                {
+                                    ourAnimals[i, 2] = "Age: " + petAge.ToString();
+                                }
+                                else if (animalAge == "?")
+                                {
+                                    ourAnimals[i, 2] = "?";
+                                }
+                                    exitLoop = true;
+                            }
+                            else exitLoop = false;
+
+                        } while(exitLoop == false);
+                    }
+
+                    string enteredDescription = ourAnimals[i, 4].Substring(21);
+
+                    if (enteredDescription == null || enteredDescription.Trim().Length == 0)
+                    {
+                        noMissingData = false;
+                        validEntry = false;
+                        do
+                        {
+                            if (ourAnimals[i, 3] != "Nickname: ")
+                            {
+                                Console.WriteLine($"Pet {ourAnimals[i, 0]}, {ourAnimals[i, 3]}, is missing a phyical description.");
+                            }
+                            else
+                            {
+                                Console.WriteLine($"Pet {ourAnimals[i, 0]} is missing a phyical description.");
+                            }
+                            Console.WriteLine("Please enter a phyical description or hit enter if it is still unknown:");
+                            readResult = Console.ReadLine();
+
+                            if (readResult != null)
+                            {
+                                if (readResult.Length > 0)
+                                {
+                                    ourAnimals[i, 4] = "Physical Description: " + readResult.ToLower();
+                                }
+                                validEntry = true;
+                            }
+                        } while (validEntry == false);
+                    }
+                }
+            }
+
+            if (noMissingData)
+            {
+                Console.WriteLine("All pets have an age and physical description!");
+
+            }
+            else
+            {
+                Console.WriteLine("All updates have been made!");
+            }
             Console.WriteLine("Press the Enter key to continue.");
             readResult = Console.ReadLine();
             break;
@@ -305,7 +407,74 @@ do
         case "4":
             // Check all animals have nicknames and personality descriptions
             Console.WriteLine("--------------------");
-            Console.WriteLine("Challenge Project - please check back soon to see progress.");
+            bool noMissingData4 = true;
+            for (int i = 0; i < maxPets; i++)
+            {
+                if (ourAnimals[i, 0] != "ID #: ")
+                {
+                    string enteredNickname = ourAnimals[i, 3].Substring(9);
+                    bool validEntry;
+                    if (enteredNickname == null || enteredNickname.Trim().Length == 0)
+                    {
+                        noMissingData4 = false;
+                        validEntry = false;
+                        do
+                        {
+                            Console.WriteLine($"Pet {ourAnimals[i, 0]} is missing a nickname.");
+                            Console.WriteLine("Please enter a nickname or hit enter if it is still unknown:");
+                            readResult = Console.ReadLine();
+
+                            if (readResult != null)
+                            {
+                                if (readResult.Length > 0)
+                                {
+                                    ourAnimals[i, 3] = "Nickname: " + readResult.ToLower();
+                                }
+                                validEntry = true;
+                            }
+                        } while (validEntry == false);
+                    }
+                    string enteredDescription = ourAnimals[i, 5].Substring(12);
+                    
+                    if (enteredDescription == null || enteredDescription.Trim().Length == 0)
+                    {
+                        noMissingData4 = false;
+                        validEntry= false;
+                        do
+                        {
+                            if (ourAnimals[i, 3] != "Nickname: ")
+                            {
+                                Console.WriteLine($"Pet {ourAnimals[i, 0]}, {ourAnimals[i, 3]}, is missing a personality description.");
+                            }
+                            else
+                            {
+                                Console.WriteLine($"Pet {ourAnimals[i, 0]} is missing a personality description.");
+                            }
+                            Console.WriteLine("Please enter a personality description or hit enter if it is still unknown:");
+                            readResult = Console.ReadLine();
+
+                            if (readResult != null)
+                            {
+                                if (readResult.Length > 0)
+                                {
+                                    ourAnimals[i, 5] = "Personality: " + readResult.ToLower();
+                                }
+                                validEntry = true;
+                            }
+                        } while (validEntry == false);
+                    }
+                }
+                
+            }
+            if (noMissingData4)
+            {
+                Console.WriteLine("All pets have a nickname and personality description!");
+
+            }
+            else 
+            {
+                Console.WriteLine("All updates have been made!");
+            }
             Console.WriteLine("Press the Enter key to continue.");
             readResult = Console.ReadLine();
             break;
