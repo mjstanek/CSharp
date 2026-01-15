@@ -159,13 +159,14 @@ string[] myStrings = new string[2] { "I like pizza. I like roast chicken. I like
     "I like all three of the menu choices" };
 
 string myString = "";
-int periodLocation = 0;
+// int periodLocation = 0;
 
 for (int i = 0; i < myStrings.Length; i++)
 {
     myString = myStrings[i];
-    periodLocation = myString.IndexOf(".");
     /*
+    periodLocation = myString.IndexOf(".");
+    
     string mySentence;
     
      * Here's the book answer

@@ -51,18 +51,21 @@ Console.WriteLine("True" + " --> String");
 Console.WriteLine(true + " --> Boolean");
 
 Console.WriteLine("\n========== Variables ==========");
-// Variables have naming conventions to be aware of:
+// Variables have naming rules to be aware of:
 // 1. Variable names can only contain letters, numbers, and underscores.
 // Special characters like spaces, hyphens, and punctuation are not allowed.
 // 2. Variable names cannot start with a number. They can start with an underscore.
 // 3. Variable names are case-sensitive. "myVariable" and "MyVariable" are different variables.
 // 4. Variable names cannot be a reserved keyword in C# like "int", "class", or "return".
+//
 // There are some best practices for naming variables:
 // 1. Use meaningful names that describe the purpose of the variable.
 // 2. Use camelCase for local variables and parameters (e.g., myVariable).
 // 3. Use PascalCase for class names and public properties (e.g., MyClass).
 // 4. Beginning a variable name with an underscore is generally discouraged
 // unless following a specific coding standard.
+//      *The exception here is for "private instances"*
+//      * Private instances are variables that are only accessible within a class.*
 // 5. Avoid using single-character variable names except for loop counters
 // or very short-lived variables in small scopes.
 // 6. It is generally considered best practice to avoid using Hungarian notation
